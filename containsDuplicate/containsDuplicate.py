@@ -36,6 +36,15 @@ def containsDuplicatesSort(nums)->bool:
 			return True 
 	return False
 
+@profile
+def containsDuplicatesHash(nums)->bool:
+	hashset = set()
+	for n in nums:
+		if n in hashset:
+			return True 
+		hashset.add(n)
+	return False
+
 class TestBrute(unittest.TestCase):
 
 	def test_simple_true(self):
@@ -89,13 +98,14 @@ if __name__ == "__main__":
 	nums = [1,2,3,5,1]
 	containsDuplicatesBrute(nums)
 	containsDuplicatesSort(nums)
+	containsDuplicatesHash(nums)
 
-	positive_int_generator = lambda n: big_o.datagen.integers(n, 0, 10000)
-	best_brute, others = big_o.big_o(containsDuplicatesBrute, positive_int_generator, n_repeats=1000)
-	# best_sort, others = big_o.big_o(containsDuplicatesSort, positive_int_generator, n_repeats=100)
+	# positive_int_generator = lambda n: big_o.datagen.integers(n, 0, 10000)
+	# best_brute, others = big_o.big_o(containsDuplicatesBrute, positive_int_generator, n_repeats=1000)
+	# # best_sort, others = big_o.big_o(containsDuplicatesSort, positive_int_generator, n_repeats=100)
 
-	print("Brute Force:\n")
-	print(best_brute)
+	# print("Brute Force:\n")
+	# print(best_brute)
 
 
 	# print("Sorting First\n")
