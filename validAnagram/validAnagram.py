@@ -9,6 +9,8 @@ An Anagram is a word or phrase formed by rearranging the letters of a different 
 
 1. Sorting the string in python essentially splits into a char array and sorts alphabetically. If two words are anagrams they should have the same sorted char arrays.
 Time complexity should be O(nlogn) due to the sorting. Space complexity is O(1).
+
+2. HashMaps. So explicitly counting up occurences of each element and building up HashMaps for s and t. THen comparing them. THis should be O(s+t) for both time and space
 """
 import unittest
 
