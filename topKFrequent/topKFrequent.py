@@ -52,6 +52,33 @@ def topKFrequentHeap(nums: list[int], k: int) -> list[int]:
 	# Final loop is O(k), so overall it seems like we have O(nlogk)
 	return [num for (count, num) in heap]
 
+def topKFrequentMaxHeap(nums: list[int], k: int) -> list[int]:
+	# heapq implementation is a min heap. Instead of O(nlogk), we can get O(klogn) by using a maxheap which we can
+	# obtain by inverting nums. This is because above we had a heap of size k and looped over n to populate and 
+	# pop elements since each poppush removed the min value. Here we are populating with n in linear time with heapify
+	# and poping k times. 
+
+	# Create hashmap of occurences
+	hashmap = {}
+	ret = []
+	#O(n) to count
+	for num in nums:
+		# Invert count to use maxheap
+		hashmap[num] = -1+hashmap.get(num, 0) # Alternative to using defaultdict
+	# Invert hashmap.items since heapq.heappop pops smallest tuple based on first index
+	# This should be O(n) as well
+	heap = [(count, num) for (num, count) in hashmap.items()]
+	# heapify is O(n) and inplace
+	heapq.heapify(heap)
+
+	#O(k) with O(logn) pop, so overall O(klogn)
+	for _ in range(k):
+		(_, num) = heapq.heappop(heap)
+		ret.append(num)
+
+	# Overall we have O(3n + klogn) ~ O(klogn)
+	return ret
+
 def topKFrequentFrequencyList(nums: list[int], k: int) -> list[int]:
 	# Create hashmap of occurences
 	hashmap = {}
@@ -76,8 +103,7 @@ def topKFrequentFrequencyList(nums: list[int], k: int) -> list[int]:
 					
 
 
-
 if __name__=="__main__":
 	nums = [1,1,1,2,2,3]
 	k = 2
-	print(topKFrequentFrequencyList(nums, k))
+	print(topKFrequentMaxHeap(nums, k))
