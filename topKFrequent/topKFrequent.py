@@ -52,7 +52,32 @@ def topKFrequentHeap(nums: list[int], k: int) -> list[int]:
 	# Final loop is O(k), so overall it seems like we have O(nlogk)
 	return [num for (count, num) in heap]
 
+def topKFrequentFrequencyList(nums: list[int], k: int) -> list[int]:
+	# Create hashmap of occurences
+	hashmap = {}
+	counts = [[] for _ in range(len(nums) + 1)]
+	ret = []
+	#O(n) to count
+	for num in nums:
+		hashmap[num] = 1+hashmap.get(num, 0) # Alternative to using defaultdict
+	for (num, count) in hashmap.items():
+		counts[count].append(num)
+	
+	# Start from end, and return top k values, skipping Nones. 
+	# outer loop is at most O(n)
+	for i in range(len(counts)-1, 0, -1):
+		if counts[i]:
+			# Inner loop is at most O(n) HOWEVER this only occurs if all values are distinct 
+			#in which case it is O(n+n) since all other entries are None. 
+			for n in counts[i]:
+				ret.append(n)
+				if len(ret) == k:
+					return ret 
+					
+
+
+
 if __name__=="__main__":
 	nums = [1,1,1,2,2,3]
 	k = 2
-	print(topKFrequentHeap(nums, k))
+	print(topKFrequentFrequencyList(nums, k))
