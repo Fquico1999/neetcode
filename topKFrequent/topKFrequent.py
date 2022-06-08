@@ -11,9 +11,7 @@ Shound be around O(nlogn) time for the sorting and O(n) space for the HashMap. T
 Space of output is O(k), so for k<n we have ~O(n) space. Likewise, looping over k tuples is O(k), so we have ~O(nlogn) for this solution. 
 """
 
-import matplotlib.pyplot as plt
-import numpy as np
-import time
+import heapq
 from collections import defaultdict
 
 def topKFrequentSortHash(nums: list[int], k: int) -> list[int]:
@@ -34,3 +32,27 @@ def topKFrequentSortHash(nums: list[int], k: int) -> list[int]:
             ret.append(k)
         # Overall should be O(nlogn+k)?
         return ret
+
+def topKFrequentHeap(nums: list[int], k: int) -> list[int]:
+	# Create hashmap of occurences
+	hashmap = {}
+	heap = []
+	#O(n) to count
+	for num in nums:
+		hashmap[num] = 1+hashmap.get(num, 0) # Alternative to using defaultdict
+	# Want top k values. However, for tuples, heap.pop will return smallest based on first element. So we must reverse the tuple
+	# O(n) to loop
+	for (num, count) in hashmap.items():
+		# Want to add k elements into the heap
+		if len(heap) < k:
+			# O(logk) to push and pop
+			heapq.heappush(heap, [count, num])
+		else:
+			heapq.heappushpop(heap, [count, num])
+	# Final loop is O(k), so overall it seems like we have O(nlogk)
+	return [num for (count, num) in heap]
+
+if __name__=="__main__":
+	nums = [1,1,1,2,2,3]
+	k = 2
+	print(topKFrequentHeap(nums, k))
