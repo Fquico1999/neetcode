@@ -13,10 +13,12 @@ You must write an algorithm that runs in O(n) time and without using the divisio
 since we construct a pre, post and output array. 
 
 2. If we use the output array to construct our pre and post fixes, we can get O(1) space since the output array space complexity doesnt count.
+What we do in the first pass is for i, we compute the prefix prod (arr[0]*arr[1]...*arr[i-1]) and store it in out[i].
+For the second pass we compute the postfix and multiply the prefix at i. 
 
 """
 
-def productExceptSelf(nums: list[int]) -> list[int]:
+def productExceptSelf(nums):# list[int]) -> list[int]:
     """
     [2,3,1,3]
     [3*1*3, 2*1*3, 2*3*3, 2*3*1]
@@ -44,6 +46,24 @@ def productExceptSelf(nums: list[int]) -> list[int]:
             output[i]*=postfix[i+1]
     return output
 
+def productExceptSelfTwoPass(nums): #list[int]) -> list[int]:
+    output = [0]*len(nums)
+
+    # Prefix Pass
+    prefix = 1
+    for i in range(len(nums)):
+        output[i] = prefix
+        prefix*=nums[i]
+    print(output)
+    
+    #Postfix pass
+    postfix=1
+    for i in range(len(nums)-1,-1, -1):
+        print(i,postfix)
+        output[i]*=postfix
+        postfix*=nums[i]
+    print(output)
+
 
 if __name__ == "__main__":
-    print(productExceptSelf([1,2,3,4]))
+    print(productExceptSelfTwoPass([1,2,3,4]))
