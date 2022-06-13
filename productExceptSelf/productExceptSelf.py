@@ -54,15 +54,14 @@ def productExceptSelfTwoPass(nums): #list[int]) -> list[int]:
     for i in range(len(nums)):
         output[i] = prefix
         prefix*=nums[i]
-    print(output)
     
     #Postfix pass
     postfix=1
     for i in range(len(nums)-1,-1, -1):
-        print(i,postfix)
         output[i]*=postfix
         postfix*=nums[i]
-    print(output)
+
+    return output
 
 
 if __name__ == "__main__":
