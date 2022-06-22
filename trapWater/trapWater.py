@@ -58,10 +58,10 @@ def trapLin(height):
 
 		if maxLeft > maxRight:
 			# We know that maxRight is smallest of the two, so 
-			trapSum += maxRight - height[r]
+			trapSum += max(maxRight - height[r],0)
 			r-=1
 		else:
-			trapSum += maxLeft - height[l]
+			trapSum += max(maxLeft - height[l],0)
 			l+=1
 	return trapSum
 
@@ -73,7 +73,7 @@ if __name__ == "__main__":
        _   x_
      _ x_ _xx_
 	_x_xx_xxxx
-	   L     
+	    L   R 
 		"""
 	height = [0,1,0,2,1,0,1,3,2,1,2,1]
 	ans = 6
