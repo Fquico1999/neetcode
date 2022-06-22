@@ -11,7 +11,7 @@ compute how much water it can trap after raining."""
 
 """
 
-def trap(height):
+def trapArr(height):
 	"""
 	Linear time. O(n) for creating maxLeft and maxRight and O(2n) space 
 	"""
@@ -38,6 +38,35 @@ def trap(height):
 		trapSum += max(0, min(maxLeft[i], maxRight[i]) - height[i])
 	return trapSum
 
+def trapLin(height):
+	"""
+	Linear Time and constant space with two pointers.
+	Recall that water is min(maxL, maxR) - height[i]
+	"""
+
+	trapSum = 0
+
+	maxLeft, maxRight = 0,0
+
+	l,r = 0, len(height)-1
+
+	while (l < r):
+		if height[l] > maxLeft:
+			maxLeft = height[l]
+		if height[r] > maxRight:
+			maxRight = height[r]
+
+		if maxLeft > maxRight:
+			# We know that maxRight is smallest of the two, so 
+			trapSum += maxRight - height[r]
+			r-=1
+		else:
+			trapSum += maxLeft - height[l]
+			l+=1
+	return trapSum
+
+
+
 
 if __name__ == "__main__":
 	"""    _
@@ -48,4 +77,5 @@ if __name__ == "__main__":
 		"""
 	height = [0,1,0,2,1,0,1,3,2,1,2,1]
 	ans = 6
-	print(trap(height) == ans)
+	# print(trap(height) == ans)
+	print(trapLin(height))
