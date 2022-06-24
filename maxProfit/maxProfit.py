@@ -8,28 +8,27 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
 
 """
 
-def maxProfitBrute(prices):
-
-	"""
-	WOrks but is O(n^2) time complexity. 
-
-	"""
+def maxProfitPointers(prices):
+	l, r = 0, 1
 	maxProfit = 0
+	while r < len(prices):
 
-	for i in range(len(prices)-1):
-		buy = prices[i]
+		if prices[r] < prices[l]:
+			l = r 
+			r+=1
+		else:
 
-		for j in range(i+1, len(prices)):
-			sell = prices[j]
+			profit = prices[r] - prices[l]
 
-			profit = sell - buy
 			if profit > maxProfit:
-				maxProfit = profit
+				maxProfit = profit 
+			r+=1
 	return maxProfit
+
 
 
 
 
 if __name__ == "__main__":
 	prices = [7,1,5,3,6,4]
-	print(maxProfitBrute(prices))
+	print(maxProfitPointers(prices))
