@@ -20,10 +20,21 @@ def lengthOfLongestSubstring(s):
 		r+=1
 	return maxLength
 
+def lengthOfLongestSubstring2(s):
+	l = 0
+	maxLength = 0
+	charSet = set()
+
+	for r in range(len(s)):
+		while s[r] in charSet:
+			charSet.remove(s[l])
+			l+=1
+		charSet.add(s[r])
+		maxLength = max(maxLength, r-l+1)
+	return maxLength
 
 
 if __name__ == "__main__":
 	s = "abcabcbb"
-	s = " "
 	ans = 3
-	print(lengthOfLongestSubstring(s))
+	print(lengthOfLongestSubstring2(s))
