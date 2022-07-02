@@ -33,12 +33,28 @@ def characterReplacement(s: str, k: int) -> int:
 
     return maxWindow
 
+def characterReplacementII(s, k):
+    
+    l = 0
+    maxFreq = 0
+    charCount = {}
+    maxWindow = 0
 
+    for r in range(len(s)):
+        charCount[s[r]] = 1+charCount.get(s[r],0)
 
+        maxFreq = max(maxFreq, charCount[s[r]])
 
+        # Check if it's a valid substring, if not, increment the left pointer
+        while (r-l+1) - maxFreq > k:
+            charCount[s[l]]-=1
+            l+=1
+        maxWindow = max(maxWindow, r-l+1)
+
+    return maxWindow
 
 if __name__ == "__main__":
     s="ABAA"
-    k=0
-    ans = 3
-    print(characterReplacement(s,k))
+    k=1
+    ans = 4
+    print(characterReplacementII(s,k))
