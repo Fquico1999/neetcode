@@ -60,6 +60,53 @@ def minWindow(s: str, t: str) -> str:
 
     return minWindow
 
+def minWindowII(s:str, t:str)->str:
+
+    if len(t) > len(s):
+        return ""
+
+    # Store start and end indices of window
+    minWindow = [0,0]
+    minWindowLen = len(s)+1
+
+    matches = 0
+
+    windowCharCount = {}
+    targetCharCount = {}
+    for char in t:
+        targetCharCount[char] = 1 + targetCharCount.get(char, 0)
+    
+    matchesNeeded = len(targetCharCount.keys())
+
+    l = 0
+    for r in range(len(s)):
+        if s[r] in targetCharCount.keys():
+            windowCharCount[s[r]] = 1 + windowCharCount.get(s[r], 0)
+
+            if windowCharCount[s[r]] == targetCharCount[s[r]]:
+                matches+=1
+
+
+            while matches == matchesNeeded:
+                if (r-l+1) < minWindowLen:
+                    minWindow = [l,r+1]
+                    minWindowLen = (r-l+1)
+
+                # Early stop if minWindowLen = len(t)
+                if  minWindowLen == len(t):
+                    break
+
+                
+                if s[l] in targetCharCount.keys():
+                    windowCharCount[s[l]] -=1 
+
+                    if windowCharCount[s[l]] < targetCharCount[s[l]]:
+                        matches-=1
+
+                l+=1
+    return s[minWindow[0]:minWindow[1]]
+
+
 
 if __name__ == "__main__":
 
@@ -67,4 +114,7 @@ if __name__ == "__main__":
     t = "AABC"
     out = "BANC"
 
-    print(minWindow('aa','aa'))
+    assert minWindowII('abc', 'a') == 'a'
+    assert minWindowII('abcaabc', 'aa') == 'aa', "Expected %s but got %s" % ('aa', minWindowII('abcaabc', 'aa'))
+    assert minWindowII('aa', 'aaa') == ''
+    assert minWindowII('adobecodebancdooo', 'abc') == 'banc'
