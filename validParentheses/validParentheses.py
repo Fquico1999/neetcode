@@ -30,14 +30,14 @@ def isValid(s:str)->bool:
 
 	center_idx = len(s)//2
 
-	bracketMap = {'[':']',']':'[',
-				'(':')', ')':'(',
-				'{': '}', '}': '{'} # This dict establishes which brackets are pairs
+	bracketMap = {'[':']',
+				'(':')',
+				'{': '}'} # This dict establishes which brackets are pairs
 
 	stack = deque()
 
 	for i in range(len(s)):
-		if len(stack) > 0 and s[i] == bracketMap[stack[-1]]:
+		if len(stack) > 0 and stack[-1] in bracketMap.keys() and s[i] == bracketMap[stack[-1]]:
 			stack.pop()
 		else:
 			stack.append(s[i])
@@ -55,3 +55,4 @@ if __name__ == "__main__":
 	assert isValid("{{[(([]))]}}")
 	assert not isValid("[){}")
 	assert isValid('[]{}([])')
+	assert not isValid("([)]")
