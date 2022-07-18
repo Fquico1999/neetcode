@@ -26,10 +26,31 @@ def dailyTemperaturesBrute(temperatures):
 			ret.append(0)
 	return ret
 
+def dailyTemperatures(temperatures):
+
+	ret = [0]*len(temperatures)
+
+	stack = []
+	indices = []
+
+	for i in range(len(temperatures)):
+
+		while stack and temperatures[i] > stack[-1]:
+			idx = indices.pop()
+			elem = stack.pop()
+			ret[idx] = i-idx
+		stack.append(temperatures[i])
+		indices.append(i)
+	return ret
+
 
 if __name__ == "__main__":
 
 	assert dailyTemperaturesBrute([73,74,75,71,69,72,76,73]) ==  [1,1,4,2,1,1,0,0]
 
 	assert dailyTemperaturesBrute([30,40,50,60]) ==  [1,1,1,0]
+
+	assert dailyTemperatures([73,74,75,71,69,72,76,73]) ==  [1,1,4,2,1,1,0,0]
+
+	assert dailyTemperatures([30,40,50,60]) ==  [1,1,1,0]
 
