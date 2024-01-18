@@ -29,6 +29,24 @@ class Solution:
                 max = num
         return max
 
+    def majorityElementBoyerMoore(self, nums):
+        """
+        Boyer-Moore Voting algorithm guarantees correctness if majority has more than n/2 occurances.
+        O(n) time and O(1) space.
+        """
+        count = 0
+        candidate = 0
+
+        for num in nums:
+            if count == 0:
+                candidate = num
+                count = 1
+            elif candidate == num:
+                count +=1
+            else:
+                count -=1
+        return candidate
+
 
 if __name__ == "__main__":
 
@@ -36,9 +54,12 @@ if __name__ == "__main__":
 
     nums = [1,2,2,2,1]
     assert test.majorityElement(nums) == 2, "Expected 2"
+    assert test.majorityElementBoyerMoore(nums) == 2, "Expected 2"
 
     nums = [0,1,2,3,3,3,3]
     assert test.majorityElement(nums) == 3, "Expected 3"
+    assert test.majorityElementBoyerMoore(nums) == 3, "Expected 3"
 
     nums = [1]
     assert test.majorityElement(nums) == 1, "Expected 1"
+    assert test.majorityElementBoyerMoore(nums) == 1, "Expected 1"
