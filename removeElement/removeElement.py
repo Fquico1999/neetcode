@@ -12,7 +12,7 @@ you need to do the following things:
 """
 
 class Solution:
-    def removeElement(self, nums, val):
+    def removeElementOld(self, nums, val):
 
         i = len(nums)-1 # pointer 1
         j = i # pointer 2
@@ -36,6 +36,17 @@ class Solution:
                     i-=1
         # reached the end
         return len(nums) - k
+    
+    def removeElement(self, nums, val):
+        # While this is much cleaner, the old algorithm is roughly twice as fast because it minimizes
+        # the number of swaps.
+        i = 0
+        for j in range(len(nums)):
+            if nums[j] != val:
+                nums[i] = nums[j]
+                i+=1
+        return i
+
 
 
 if __name__ == "__main__":
