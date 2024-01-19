@@ -8,10 +8,10 @@ You may assume that the majority element always exists in the array.
 """
 
 class Solution:
-    def majorityElement(self, nums):
+    def majority_element(self, nums):
         """
         The solution loops through nums and creates a dict of num:count pairs. O(n) time, O(n) space
-        Then it iterates through the dictionary and selects the num with the largest count, also O(n)
+        Then it iterates through the dictionary and selects the num with the largest count.
         So overall, O(n) time and O(n) space.
         """
         if len(nums) == 1:
@@ -19,19 +19,20 @@ class Solution:
 
         d = {}
         for num in nums:
-            if num in d.keys():
+            if num in d:
                 d[num]+=1
             else:
                 d[num] = 1
-        max = nums[0]
+        m = nums[0]
         for num, count in d.items():
-            if count > d[max]:
-                max = num
-        return max
+            if count > d[m]:
+                m = num
+        return m
 
-    def majorityElementBoyerMoore(self, nums):
+    def majority_element_boyer_moore(self, nums):
         """
-        Boyer-Moore Voting algorithm guarantees correctness if majority has more than n/2 occurances.
+        Boyer-Moore Voting algorithm.
+        Guarantees correctness if majority has more than n/2 occurances.
         O(n) time and O(1) space.
         """
         count = 0
@@ -52,14 +53,14 @@ if __name__ == "__main__":
 
     test = Solution()
 
-    nums = [1,2,2,2,1]
-    assert test.majorityElement(nums) == 2, "Expected 2"
-    assert test.majorityElementBoyerMoore(nums) == 2, "Expected 2"
+    n = [1,2,2,2,1]
+    assert test.majority_element(n) == 2, "Expected 2"
+    assert test.majority_element_boyer_moore(n) == 2, "Expected 2"
 
-    nums = [0,1,2,3,3,3,3]
-    assert test.majorityElement(nums) == 3, "Expected 3"
-    assert test.majorityElementBoyerMoore(nums) == 3, "Expected 3"
+    n = [0,1,2,3,3,3,3]
+    assert test.majority_element(n) == 3, "Expected 3"
+    assert test.majority_element_boyer_moore(n) == 3, "Expected 3"
 
-    nums = [1]
-    assert test.majorityElement(nums) == 1, "Expected 1"
-    assert test.majorityElementBoyerMoore(nums) == 1, "Expected 1"
+    n = [1]
+    assert test.majority_element(n) == 1, "Expected 1"
+    assert test.majority_element_boyer_moore(n) == 1, "Expected 1"
