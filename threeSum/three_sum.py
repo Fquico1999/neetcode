@@ -6,7 +6,7 @@ Difficulty: Medium
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k,
  and nums[i] + nums[j] + nums[k] == 0.
 Notice that the solution set must not contain duplicate triplets.
-"""     
+"""
 
 def threeSumBrute(nums):
     # Sort in O(nlogn)
@@ -27,7 +27,7 @@ def threeSumBrute(nums):
 def threeSum(nums):
     nums = sorted(nums)
     ret = []
-    visited = set()
+    # visited = set()
 
     for i,a in enumerate(nums):
         if a>0:
@@ -37,12 +37,12 @@ def threeSum(nums):
 
         j,k = i+1, len(nums)-1
         while(j<k):
-            threeSum = a + nums[j] + nums[k]
+            tSum = a + nums[j] + nums[k]
 
 
-            if threeSum < 0 :
+            if tSum < 0 :
                 j+=1
-            elif threeSum > 0:
+            elif tSum > 0:
                 k-=1
             else:
                 ret.append([a, nums[j], nums[k]])
@@ -51,8 +51,7 @@ def threeSum(nums):
                     j+=1
     return ret
 
-        
 
 if __name__ == "__main__":
-    nums = [-1,0,1,2,-1,-4]
-    print(threeSum(nums))
+    n = [-1,0,1,2,-1,-4]
+    print(threeSum(n))

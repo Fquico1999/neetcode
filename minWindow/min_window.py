@@ -5,7 +5,7 @@
 Difficulty: Hard
 
 Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that 
-every character in t (including duplicates) is included in the window. 
+every character in t (including duplicates) is included in the window.
 If there is no such substring, return the empty string "".
 
 The testcases will be generated such that the answer is unique.
@@ -22,7 +22,7 @@ def minWindow(s: str, t: str) -> str:
                 return False
         return True
 
-    minWindow = ""
+    minWin = ""
     minSize = len(s)+1
 
     if len(t) > len(s):
@@ -43,22 +43,22 @@ def minWindow(s: str, t: str) -> str:
         charCount[s[r]] = 1 + charCount.get(s[r], 0)
 
          # This operation is at worst O(52) (since its a-z, A-Z)
-        print('pre',l,r,minSize,minWindow,subCharCount,charCount)
+        print('pre',l,r,minSize,minWin,subCharCount,charCount)
         while l <= r and isSubset(subCharCount, charCount):
             if (r-l+1) < minSize:
-                minWindow = s[l:r+1]
-                minSize = len(minWindow)
+                minWin = s[l:r+1]
+                minSize = len(minWin)
 
                 # If the size of the window is the same as len(t), can early stop
                 if minSize == len(t):
-                    return minWindow
+                    return minWin
 
             #If the window is valid, then we'll decrease it by incrementing the left pointer
             charCount[s[l]] -=1
 
             l+=1
 
-    return minWindow
+    return minWin
 
 def minWindowII(s:str, t:str)->str:
 
@@ -66,7 +66,7 @@ def minWindowII(s:str, t:str)->str:
         return ""
 
     # Store start and end indices of window
-    minWindow = [0,0]
+    minWin = [0,0]
     minWindowLen = len(s)+1
 
     matches = 0
@@ -75,7 +75,7 @@ def minWindowII(s:str, t:str)->str:
     targetCharCount = {}
     for char in t:
         targetCharCount[char] = 1 + targetCharCount.get(char, 0)
-    
+
     matchesNeeded = len(targetCharCount.keys())
 
     l = 0
@@ -89,30 +89,30 @@ def minWindowII(s:str, t:str)->str:
 
             while matches == matchesNeeded:
                 if (r-l+1) < minWindowLen:
-                    minWindow = [l,r+1]
+                    minWin = [l,r+1]
                     minWindowLen = (r-l+1)
 
                 # Early stop if minWindowLen = len(t)
                 if  minWindowLen == len(t):
                     break
 
-                
+
                 if s[l] in targetCharCount.keys():
-                    windowCharCount[s[l]] -=1 
+                    windowCharCount[s[l]] -=1
 
                     if windowCharCount[s[l]] < targetCharCount[s[l]]:
                         matches-=1
 
                 l+=1
-    return s[minWindow[0]:minWindow[1]]
+    return s[minWin[0]:minWin[1]]
 
 
 
 if __name__ == "__main__":
 
-    s = "ADOBECODEBANCDOOOOOOOBANC"
-    t = "AABC"
-    out = "BANC"
+    S = "ADOBECODEBANCDOOOOOOOBANC"
+    T = "AABC"
+    OUT = "BANC"
 
     assert minWindowII('abc', 'a') == 'a'
     assert minWindowII('abcaabc', 'aa') == 'aa', "Expected %s but got %s" % ('aa', minWindowII('abcaabc', 'aa'))

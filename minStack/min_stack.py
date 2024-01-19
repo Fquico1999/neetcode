@@ -30,11 +30,11 @@ class MinStack:
             self.minStack.append(val)
         else:
             self.minStack.append(self.minStack[-1])
-        
+
     def pop(self) -> None:
         self.stack.pop()
         self.minStack.pop()
-        
+
 
     def top(self) -> int:
         if self.stack:
@@ -59,4 +59,3 @@ if __name__ == "__main__":
     print(obj.getMin())
     obj.pop()
     param_3 = obj.top()
-    

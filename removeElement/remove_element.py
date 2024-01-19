@@ -36,7 +36,7 @@ class Solution:
                     i-=1
         # reached the end
         return len(nums) - k
-    
+
     def removeElement(self, nums, val):
         # While this is much cleaner, the old algorithm is roughly twice as fast because it minimizes
         # the number of swaps.
@@ -50,16 +50,16 @@ class Solution:
 
 
 if __name__ == "__main__":
-    test = Solution() 
+    test = Solution()
 
-    nums = [0,1,2,2,3,0,4,2]
-    assert test.removeElement(nums, 2) == 5, "Expected 5"
-    assert nums[-3:] == [2,2,2], "Wrong"
+    n = [0,1,2,2,3,0,4,2]
+    assert test.removeElement(n, 2) == 5, "Expected 5"
+    assert n[-3:] == [2,2,2], "Wrong"
 
-    nums = [3,2,2,3]
-    assert test.removeElement(nums, 2) == 2, "Expected 2"
-    assert nums[-2:] == [2,2], "Wrong"
+    n = [3,2,2,3]
+    assert test.removeElement(n, 2) == 2, "Expected 2"
+    assert n[-2:] == [2,2], "Wrong"
 
-    nums = [0,1,2,2,3,0,4,2]
-    assert test.removeElement(nums, 2) == 5, "Expected 5"
-    assert nums[-3:] == [2,2,2], "Wrong"
+    n = [0,1,2,2,3,0,4,2]
+    assert test.removeElement(n, 2) == 5, "Expected 5"
+    assert n[-3:] == [2,2,2], "Wrong"

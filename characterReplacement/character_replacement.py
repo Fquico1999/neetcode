@@ -4,7 +4,7 @@
 """
 Difficulty: Medium
 
-You are given a string s and an integer k. 
+You are given a string s and an integer k.
 You can choose any character of the string and change it to any other uppercase English character. 
 You can perform this operation at most k times.
 
@@ -34,7 +34,7 @@ def characterReplacement(s: str, k: int) -> int:
     return maxWindow
 
 def characterReplacementII(s, k):
-    
+
     l = 0
     maxFreq = 0
     charCount = {}
@@ -54,7 +54,7 @@ def characterReplacementII(s, k):
     return maxWindow
 
 if __name__ == "__main__":
-    s="ABAA"
-    k=1
-    ans = 4
-    print(characterReplacementII(s,k))
+    S="ABAA"
+    K=1
+    ANS = 4
+    print(characterReplacementII(S,K))

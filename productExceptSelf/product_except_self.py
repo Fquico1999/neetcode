@@ -6,16 +6,13 @@ Difficulty: Medium
 Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 You must write an algorithm that runs in O(n) time and without using the division operation.
-"""
 
-"""
 1. Prefix cumprod and postfix cumprod. Both take O(n), and done sequentially, we get two O(2n) ~ O(n), and we need O(n) space complexity for it
-since we construct a pre, post and output array. 
+since we construct a pre, post and output array.
 
 2. If we use the output array to construct our pre and post fixes, we can get O(1) space since the output array space complexity doesnt count.
 What we do in the first pass is for i, we compute the prefix prod (arr[0]*arr[1]...*arr[i-1]) and store it in out[i].
-For the second pass we compute the postfix and multiply the prefix at i. 
-
+For the second pass we compute the postfix and multiply the prefix at i.
 """
 
 def productExceptSelf(nums):# list[int]) -> list[int]:
@@ -54,7 +51,7 @@ def productExceptSelfTwoPass(nums): #list[int]) -> list[int]:
     for i in range(len(nums)):
         output[i] = prefix
         prefix*=nums[i]
-    
+
     #Postfix pass
     postfix=1
     for i in range(len(nums)-1,-1, -1):
