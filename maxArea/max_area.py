@@ -7,12 +7,10 @@ You are given an integer array height of length n. There are n vertical lines dr
 Find two lines that together with the x-axis form a container, such that the container contains the most water.
 Return the maximum amount of water a container can store.
 
-Notice that you may not slant the container.""" 
+Notice that you may not slant the container.
 
-"""
-A brute force solution would be O(n^2) time complexity, but we can do better. 
-We start with two pointers, left and right, at the ends of the array. Note that we can 
-
+A brute force solution would be O(n^2) time complexity, but we can do better.
+We start with two pointers, left and right, at the ends of the array. Note that we can
 """
 
 def maxArea(height):

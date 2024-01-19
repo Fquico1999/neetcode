@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-
-import collections
 """
 Difficulty: Hard
 
@@ -8,13 +6,16 @@ You are given an array of integers nums, there is a sliding window of size k whi
 
 Return the max sliding window.
 """
+
+import collections
+
 def maxSlidingWindow(nums, k):
 
     if k > len(nums):
         return []
 
     maxVal = -float("infinity")
-    
+
     l = 0
 
     # Find maxval in first k nums

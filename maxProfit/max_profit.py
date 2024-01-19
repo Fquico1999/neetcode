@@ -9,26 +9,26 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
 """
 
 def maxProfitPointers(prices):
-	l, r = 0, 1
-	maxProfit = 0
-	while r < len(prices):
+    l, r = 0, 1
+    maxProfit = 0
+    while r < len(prices):
 
-		if prices[r] < prices[l]:
-			l = r 
-			r+=1
-		else:
+        if prices[r] < prices[l]:
+            l = r
+            r+=1
+        else:
 
-			profit = prices[r] - prices[l]
+            profit = prices[r] - prices[l]
 
-			if profit > maxProfit:
-				maxProfit = profit 
-			r+=1
-	return maxProfit
+            if profit > maxProfit:
+                maxProfit = profit
+            r+=1
+    return maxProfit
 
 
 
 
 
 if __name__ == "__main__":
-	prices = [7,1,5,3,6,4]
-	print(maxProfitPointers(prices))
+    prices = [7,1,5,3,6,4]
+    print(maxProfitPointers(prices))
