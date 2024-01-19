@@ -5,10 +5,8 @@ Difficulty: Easy
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 You can return the answer in any order.
-"""
 
-"""
-1. Brute Force solution is O(n^2) time complexity. 
+1. Brute Force solution is O(n^2) time complexity.
 
 2. Hash Map: create a hash map of array where key is array value and value is the index. We want to check if the difference
 between the current element and the target exists in the hash map. Time Complexity is O(n) since worst case we need to loop

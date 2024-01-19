@@ -48,7 +48,7 @@ def group_anagrams_count(strs):# list[str]) -> list[list[str]]:
         for i,letter in enumerate(list('abcdefghijklmnopqrstuvwxyz')):
             # Counting is O(n)
             count+=elem.count(letter)*10**i
-        if count in hashmap.keys():
+        if count in hashmap:
             hashmap[count].append(elem)
         else:
             hashmap[count] = [elem]

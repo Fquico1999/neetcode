@@ -2,12 +2,13 @@
 
 """
 Difficulty: Medium
-Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+Given an unsorted array of integers nums, return the length of the longest
+consecutive elements sequence.
 You must write an algorithm that runs in O(n) time.
 
 """
 
-def longestConsecutive(nums):# List[int]) -> int:
+def longest_consecutive(nums):# List[int]) -> int:
     longest = 0
     # O(n) space
     nums = set(nums)
@@ -22,7 +23,7 @@ def longestConsecutive(nums):# List[int]) -> int:
             a = num
             # At most this will run n times.
             #If it runs n times, it means that the outer for loop only runs once, so still 0(n)
-            while (a+1 in nums):
+            while a+1 in nums:
                 length+=1
                 a +=1
             if length > longest:
@@ -33,5 +34,5 @@ def longestConsecutive(nums):# List[int]) -> int:
 
 
 if __name__ == "__main__":
-    nums = [0,3,7,2,5,8,4,6,0,1,100]
-    print(longestConsecutive(nums))
+    n = [0,3,7,2,5,8,4,6,0,1,100]
+    print(longest_consecutive(n))

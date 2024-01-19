@@ -16,34 +16,34 @@ import unittest
 
 
 def validAnagramSort(s: str, t: str) -> bool:
-	if sorted(s) == sorted(t):
-		return True 
-	else:
-		return False
+    if sorted(s) == sorted(t):
+        return True 
+    else:
+        return False
 
 def validAnagramHashMap(s: str, t: str) -> bool:
-	if len(s)!= len(t):
-		return False
+    if len(s)!= len(t):
+        return False
 
-	countS, countT = {},{}
+    countS, countT = {},{}
 
-	for i in range(len(s)):
-		countS[s[i]] = 1+countS.get(s[i],0)
-		countT[t[i]] = 1+countT.get(t[i],0)
-	for c in countS:
-		if countS[c] != countT.get(c,0):
-			return False 
-	return True
+    for i in range(len(s)):
+        countS[s[i]] = 1+countS.get(s[i],0)
+        countT[t[i]] = 1+countT.get(t[i],0)
+    for c in countS:
+        if countS[c] != countT.get(c,0):
+            return False 
+    return True
 
 class Test(unittest.TestCase):
-	def setUp(self):
-		self.func = validAnagramSort
+    def setUp(self):
+        self.func = validAnagramSort
 
-	def test_a(self):
-		self.assertTrue(self.func("Hello", "elloH"))
+    def test_a(self):
+        self.assertTrue(self.func("Hello", "elloH"))
 
-	def test_b(self):
-		self.assertFalse(self.func("Hello", "elloB"))
+    def test_b(self):
+        self.assertFalse(self.func("Hello", "elloB"))
 
 if __name__ == "__main__":
-	unittest.main()
+    unittest.main()
