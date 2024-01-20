@@ -15,6 +15,13 @@ class Solution():
     """
     def h_index(self, citations)-> int:
         """
-        Implementation
+        Implementation using python's sorted function.
+        Sorting the array takes O(nlogn), and then iterating through
+        takes at most O(n). So O(nlogn) time complexity.
         """
+        arr = sorted(citations, reverse=True)
         h = 0
+        for i, num in enumerate(arr):
+            if num >= i+1:
+                h = i+1
+        return h
