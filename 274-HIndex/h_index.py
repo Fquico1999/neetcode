@@ -19,9 +19,9 @@ class Solution():
         Sorting the array takes O(nlogn), and then iterating through
         takes at most O(n). So O(nlogn) time complexity.
         """
-        arr = sorted(citations, reverse=True)
+        citations.sort(reverse=True)
         h = 0
-        for i, num in enumerate(arr):
+        for i, num in enumerate(citations):
             if num >= i+1:
                 h = i+1
         return h
