@@ -30,6 +30,7 @@ class Solution:
                 #New unique
                 nums[j] = nums[i]
                 j+=1
+
             i+=1
         return j
 

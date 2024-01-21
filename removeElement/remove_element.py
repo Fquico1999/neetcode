@@ -36,7 +36,7 @@ class Solution:
                 # Either got to the end, or found val
                 if j < 0:
                     return len(nums) - k
-                elif nums[j] == val:
+                if nums[j] == val:
                     #swap
                     nums[j] = nums[i]
                     nums[i] = val

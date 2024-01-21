@@ -51,8 +51,7 @@ class MinStack:
         """
         if self.stack:
             return self.stack[-1]
-        else:
-            return None
+        return None
 
     def get_min(self) -> int:
         """
@@ -60,8 +59,7 @@ class MinStack:
         """
         if self.min_stack:
             return self.min_stack[-1]
-        else:
-            return None
+        return None
 
 
 if __name__ == "__main__":

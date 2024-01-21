@@ -120,6 +120,7 @@ def top_k_frequent_frequency_list(nums: list[int], k: int) -> list[int]:
                 ret.append(m)
                 if len(ret) == k:
                     return ret
+    return []
 
 
 if __name__=="__main__":

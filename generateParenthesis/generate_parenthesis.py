@@ -27,6 +27,8 @@ def generate_parenthesis( n: int):
             stack.pop()
             recursion(n, stack, ret + ')')
 
+        return False
+
     recursion(n, [], "")
     return res_arr
 
