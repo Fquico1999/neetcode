@@ -24,7 +24,7 @@ class Solution: # pylint: disable=too-few-public-methods
 
         num_unique = 2 # number of repetitions of unique allowed
         i = 1
-        j = 1
+        k = 1
 
         if nums[0] == nums[1]:
             c = 1
@@ -32,18 +32,18 @@ class Solution: # pylint: disable=too-few-public-methods
             c = 0
         while i < len(nums):
             if nums[i] != nums[i-1]:
-                nums[j] = nums[i]
-                j+=1
+                nums[k] = nums[i]
+                k+=1
                 c=1
             else:
                 if c < num_unique:
                     c+=1
-                    nums[j] = nums[i]
-                    j+=1
+                    nums[k] = nums[i]
+                    k+=1
 
             i+=1
 
-        return j
+        return k
 
 
 
