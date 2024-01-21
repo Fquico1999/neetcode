@@ -10,7 +10,7 @@ Return the minimum number of jumps to reach nums[n - 1].
 The test cases are generated such that you can reach nums[n - 1].
 """
 
-class Solution:
+class Solution: # pylint: disable=too-few-public-methods
     """
     Solution Class
     """

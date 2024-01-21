@@ -16,7 +16,7 @@ target exists in the hash map. Time Complexity is O(n) since worst case we need 
 once over the array. The space complexity is O(n) for the HashMap
 """
 
-def two_sum_brute(nums: list[int], target: int)->list[int]:
+def two_sum_brute(nums: list[int], target: int):
     """
     Brute force implementation O(n^2)
     """
@@ -26,7 +26,7 @@ def two_sum_brute(nums: list[int], target: int)->list[int]:
                 return [i,j]
     return [0,0]
 
-def two_sum_hash(nums: list[int], target: int)->list[int]:
+def two_sum_hash(nums: list[int], target: int):
     """
     Hashmap implementation in O(n)
     """

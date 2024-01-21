@@ -7,7 +7,7 @@ Each element in the array represents your maximum jump length at that position.
 Return true if you can reach the last index, or false otherwise.
 """
 
-class Solution:
+class Solution: # pylint: disable=too-few-public-methods
     """
     Solution Class
     """

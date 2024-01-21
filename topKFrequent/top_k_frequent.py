@@ -17,7 +17,7 @@ Likewise, looping over k tuples is O(k), so we have ~O(nlogn) for this solution.
 import heapq
 from collections import defaultdict
 
-def top_k_frequent_sort_hash(nums: list[int], k: int) -> list[int]:
+def top_k_frequent_sort_hash(nums: list[int], k: int):
     """
     Implementation with sorting a hashmap
     """
@@ -42,7 +42,7 @@ def top_k_frequent_sort_hash(nums: list[int], k: int) -> list[int]:
     # Overall should be O(nlogn+k)?
     return ret
 
-def top_k_frequent_heap(nums: list[int], k: int) -> list[int]:
+def top_k_frequent_heap(nums: list[int], k: int):
     """
     Implementation using a heap.
     """
@@ -65,7 +65,7 @@ def top_k_frequent_heap(nums: list[int], k: int) -> list[int]:
     # Final loop is O(k), so overall it seems like we have O(nlogk)
     return [num for (count, num) in heap]
 
-def top_k_frequent_max_heap(nums: list[int], k: int) -> list[int]:
+def top_k_frequent_max_heap(nums: list[int], k: int):
     """
     heapq implementation is a min heap. Instead of O(nlogk), we can get O(klogn)
     by using a maxheap which we can obtain by inverting nums.
@@ -96,7 +96,7 @@ def top_k_frequent_max_heap(nums: list[int], k: int) -> list[int]:
     # Overall we have O(3n + klogn) ~ O(klogn)
     return ret
 
-def top_k_frequent_frequency_list(nums: list[int], k: int) -> list[int]:
+def top_k_frequent_frequency_list(nums: list[int], k: int):
     """
     Implemenation using hashmap of occurences.
     """

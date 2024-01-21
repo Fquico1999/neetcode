@@ -8,7 +8,7 @@ However, you can buy it then immediately sell it on the same day.
 Find and return the maximum profit you can achieve.
 """
 
-class Solution:
+class Solution: # pylint: disable=too-few-public-methods
     """
     Solution Class
     """

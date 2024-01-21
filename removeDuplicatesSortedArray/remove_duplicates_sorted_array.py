@@ -12,7 +12,7 @@ Consider the number of unique elements of nums to be k:
 - Return k.
 """
 
-class Solution:
+class Solution: # pylint: disable=too-few-public-methods
     """
     Solution Class
     """
@@ -29,8 +29,8 @@ class Solution:
             if nums[i] != nums[i-1]:
                 #New unique
                 nums[j] = nums[i]
+                # Increment
                 j+=1
-
             i+=1
         return j
 
