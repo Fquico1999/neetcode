@@ -2,19 +2,29 @@
 
 """
 Difficulty: Medium
-Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+Given an integer array nums and an integer k, return the k most frequent elements.
+You may return the answer in any order.
 
-1. Sort a Hashmap. Use a hashmap to store the frequency of each number in the input array. Use sorted to sort based on the count.
-Shound be around O(nlogn) time for the sorting and O(n) space for the HashMap. Then we need to loop over k tuples to construct the output array. 
-Space of output is O(k), so for k<n we have ~O(n) space. Likewise, looping over k tuples is O(k), so we have ~O(nlogn) for this solution. 
+1. Sort a Hashmap. Use a hashmap to store the frequency of each number in the input array.
+Use sorted to sort based on the count.
+Shound be around O(nlogn) time for the sorting and O(n) space for the HashMap.
+Then we need to loop over k tuples to construct the output array. 
+Space of output is O(k), so for k<n we have ~O(n) space.
+Likewise, looping over k tuples is O(k), so we have ~O(nlogn) for this solution. 
 
 """
 
 import heapq
 from collections import defaultdict
 
-def topKFrequentSortHash(nums: list[int], k: int) -> list[int]:
-    def sortKey(arr):
+def top_k_frequent_sort_hash(nums: list[int], k: int) -> list[int]:
+    """
+    Implementation with sorting a hashmap
+    """
+    def sort_key(arr):
+        """
+        Function to sort array by second element
+        """
         # want to sort by second element of tuple
         return arr[1]
 
@@ -25,21 +35,25 @@ def topKFrequentSortHash(nums: list[int], k: int) -> list[int]:
     for elem in nums:
         hashmap[elem]+=1
     # Returns a list of tuples, should be O(nlogn)?
-    sorted_by_counts = sorted(hashmap.items(), key=sortKey, reverse=True)
+    sorted_by_counts = sorted(hashmap.items(), key=sort_key, reverse=True)
     # Loop over first k tuples and add first item to return array,  O (k)
     for (i,_) in sorted_by_counts[:k]:
         ret.append(i)
     # Overall should be O(nlogn+k)?
     return ret
 
-def topKFrequentHeap(nums: list[int], k: int) -> list[int]:
+def top_k_frequent_heap(nums: list[int], k: int) -> list[int]:
+    """
+    Implementation using a heap.
+    """
     # Create hashmap of occurences
     hashmap = {}
     heap = []
     #O(n) to count
     for num in nums:
         hashmap[num] = 1+hashmap.get(num, 0) # Alternative to using defaultdict
-    # Want top k values. However, for tuples, heap.pop will return smallest based on first element. So we must reverse the tuple
+    # Want top k values. However, for tuples,
+    # heap.pop will return smallest based on first element. So we must reverse the tuple
     # O(n) to loop
     for (num, count) in hashmap.items():
         # Want to add k elements into the heap
@@ -51,11 +65,15 @@ def topKFrequentHeap(nums: list[int], k: int) -> list[int]:
     # Final loop is O(k), so overall it seems like we have O(nlogk)
     return [num for (count, num) in heap]
 
-def topKFrequentMaxHeap(nums: list[int], k: int) -> list[int]:
-    # heapq implementation is a min heap. Instead of O(nlogk), we can get O(klogn) by using a maxheap which we can
-    # obtain by inverting nums. This is because above we had a heap of size k and looped over n to populate and 
-    # pop elements since each poppush removed the min value. Here we are populating with n in linear time with heapify
-    # and poping k times.
+def top_k_frequent_max_heap(nums: list[int], k: int) -> list[int]:
+    """
+    heapq implementation is a min heap. Instead of O(nlogk), we can get O(klogn)
+    by using a maxheap which we can obtain by inverting nums.
+    This is because above we had a heap of size k and looped over n to populate and 
+    pop elements since each poppush removed the min value.
+    Here we are populating with n in linear time with heapify
+    and popping k times.
+    """
 
     # Create hashmap of occurences
     hashmap = {}
@@ -78,7 +96,10 @@ def topKFrequentMaxHeap(nums: list[int], k: int) -> list[int]:
     # Overall we have O(3n + klogn) ~ O(klogn)
     return ret
 
-def topKFrequentFrequencyList(nums: list[int], k: int) -> list[int]:
+def top_k_frequent_frequency_list(nums: list[int], k: int) -> list[int]:
+    """
+    Implemenation using hashmap of occurences.
+    """
     # Create hashmap of occurences
     hashmap = {}
     counts = [[] for _ in range(len(nums) + 1)]
@@ -103,4 +124,4 @@ def topKFrequentFrequencyList(nums: list[int], k: int) -> list[int]:
 
 if __name__=="__main__":
     n = [1,1,1,2,2,3]
-    print(topKFrequentMaxHeap(n, 2))
+    print(top_k_frequent_max_heap(n, 2))

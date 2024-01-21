@@ -54,6 +54,9 @@ class Solution:
             k-=1
 
     def merge(self, nums1, m, nums2, n):
+        """
+        Cleaner implementation
+        """
         i = m-1
         j = n-1
         k = m+n-1

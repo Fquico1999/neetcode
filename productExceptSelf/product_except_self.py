@@ -3,19 +3,24 @@
 """
 Difficulty: Medium
 
-Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+Given an integer array nums, return an array answer such that answer[i]
+is equal to the product of all the elements of nums except nums[i].
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 You must write an algorithm that runs in O(n) time and without using the division operation.
 
-1. Prefix cumprod and postfix cumprod. Both take O(n), and done sequentially, we get two O(2n) ~ O(n), and we need O(n) space complexity for it
+1. Prefix cumprod and postfix cumprod.
+Both take O(n), and done sequentially, we get two O(2n) ~ O(n),
+and we need O(n) space complexity for it
 since we construct a pre, post and output array.
 
-2. If we use the output array to construct our pre and post fixes, we can get O(1) space since the output array space complexity doesnt count.
-What we do in the first pass is for i, we compute the prefix prod (arr[0]*arr[1]...*arr[i-1]) and store it in out[i].
+2. If we use the output array to construct our pre and post fixes,
+we can get O(1) space since the output array space complexity doesnt count.
+What we do in the first pass is for i, we compute the
+prefix prod (arr[0]*arr[1]...*arr[i-1]) and store it in out[i].
 For the second pass we compute the postfix and multiply the prefix at i.
 """
 
-def productExceptSelf(nums):# list[int]) -> list[int]:
+def product_except_self(nums):# list[int]) -> list[int]:
     """
     [2,3,1,3]
     [3*1*3, 2*1*3, 2*3*3, 2*3*1]
@@ -43,14 +48,17 @@ def productExceptSelf(nums):# list[int]) -> list[int]:
             output[i]*=postfix[i+1]
     return output
 
-def productExceptSelfTwoPass(nums): #list[int]) -> list[int]:
+def product_except_self_two_pass(nums): #list[int]) -> list[int]:
+    """
+    Implementation with O(1) space since it uses the output array.
+    """
     output = [0]*len(nums)
 
     # Prefix Pass
     prefix = 1
-    for i in range(len(nums)):
+    for i, num in enumerate(nums):
         output[i] = prefix
-        prefix*=nums[i]
+        prefix*=num
 
     #Postfix pass
     postfix=1
@@ -62,4 +70,4 @@ def productExceptSelfTwoPass(nums): #list[int]) -> list[int]:
 
 
 if __name__ == "__main__":
-    print(productExceptSelfTwoPass([1,2,3,4]))
+    print(product_except_self_two_pass([1,2,3,4]))

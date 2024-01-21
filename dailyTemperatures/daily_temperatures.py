@@ -16,12 +16,12 @@ def daily_temperatures_brute(temperatures):
 
     ret = []
 
-    for i, _ in enumerate(temperatures):
+    for i, temp in enumerate(temperatures):
 
         j = i
         found_greater = False
         while j < len(temperatures):
-            if temperatures[j] > temperatures[i]:
+            if temperatures[j] > temp:
                 found_greater = True
                 ret.append(j-i)
                 break

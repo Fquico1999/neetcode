@@ -9,30 +9,30 @@ compute how much water it can trap after raining.
 
 def trap_arr(height):
     """
-    Linear time. O(n) for creating maxLeft and maxRight and O(2n) space
+    Linear time. O(n) for creating max_left and max_right and O(2n) space
     """
 
-    trapSum = 0
+    trap_sum = 0
 
-    maxLeft = [0]*len(height)
-    maxRight = [0]*len(height)
+    max_left = [0]*len(height)
+    max_right = [0]*len(height)
 
     for i in range(len(height)-1):
         j = len(height)-1-i
 
-        if height[i] > maxLeft[i]:
-            maxLeft[i+1] = height[i]
+        if height[i] > max_left[i]:
+            max_left[i+1] = height[i]
         else:
-            maxLeft[i+1] = maxLeft[i]
+            max_left[i+1] = max_left[i]
 
-        if height[j] > maxRight[j]:
-            maxRight[j-1] = height[j]
+        if height[j] > max_right[j]:
+            max_right[j-1] = height[j]
         else:
-            maxRight[j-1] = maxRight[j]
+            max_right[j-1] = max_right[j]
 
-    for i in range(len(height)):
-        trapSum += max(0, min(maxLeft[i], maxRight[i]) - height[i])
-    return trapSum
+    for i, h in enumerate(height):
+        trap_sum += max(0, min(max_left[i], max_right[i]) - h)
+    return trap_sum
 
 def trap_lin(height):
     """
@@ -40,26 +40,26 @@ def trap_lin(height):
     Recall that water is min(maxL, maxR) - height[i]
     """
 
-    trapSum = 0
+    trap_sum = 0
 
-    maxLeft, maxRight = 0,0
+    max_left, max_right = 0,0
 
     l,r = 0, len(height)-1
 
     while l < r:
-        if height[l] > maxLeft:
-            maxLeft = height[l]
-        if height[r] > maxRight:
-            maxRight = height[r]
+        if height[l] > max_left:
+            max_left = height[l]
+        if height[r] > max_right:
+            max_right = height[r]
 
-        if maxLeft > maxRight:
-            # We know that maxRight is smallest of the two, so
-            trapSum += max(maxRight - height[r],0)
+        if max_left > max_right:
+            # We know that max_right is smallest of the two, so
+            trap_sum += max(max_right - height[r],0)
             r-=1
         else:
-            trapSum += max(maxLeft - height[l],0)
+            trap_sum += max(max_left - height[l],0)
             l+=1
-    return trapSum
+    return trap_sum
 
 
 if __name__ == "__main__":
@@ -69,7 +69,7 @@ if __name__ == "__main__":
     # _x_xx_xxxx
     #     L   R
     #     """
-    h = [0,1,0,2,1,0,1,3,2,1,2,1]
+    h_arr = [0,1,0,2,1,0,1,3,2,1,2,1]
     ANS = 6
     # print(trap(h) == ANS)
-    print(trap_lin(h))
+    print(trap_lin(h_arr))

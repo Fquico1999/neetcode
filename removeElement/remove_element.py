@@ -2,11 +2,13 @@
 Difficulty: Easy
 
 Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. 
-The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+The order of the elements may be changed.
+Then return the number of elements in nums which are not equal to val.
 
 Consider the number of elements in nums which are not equal to val be k, to get accepted, 
 you need to do the following things:
-- Change the array nums such that the first k elements of nums contain the elements which are not equal to val. 
+- Change the array nums such that the first k elements of
+  nums contain the elements which are not equal to val. 
 - The remaining elements of nums are not important as well as the size of nums.
 - Return k.
 """
@@ -15,12 +17,15 @@ class Solution:
     """
     Solution Class
     """
-    def removeElementOld(self, nums, val):
+    def remove_element_old(self, nums, val):
+        """
+        Older 2ptr implementation.
+        """
 
         i = len(nums)-1 # pointer 1
         j = i # pointer 2
         k = 0 # Keep track of how many swaps
-        while (i >= 0):
+        while i >= 0:
             if nums[i] == val:
                 k+=1
                 i-=1
@@ -40,13 +45,15 @@ class Solution:
         # reached the end
         return len(nums) - k
 
-    def removeElement(self, nums, val):
-        # While this is much cleaner, the old algorithm is roughly twice as fast because it minimizes
-        # the number of swaps.
+    def remove_element(self, nums, val):
+        """
+        While this is much cleaner, the old algorithm is roughly twice as fast because it minimizes
+        the number of swaps.
+        """
         i = 0
-        for j in range(len(nums)):
-            if nums[j] != val:
-                nums[i] = nums[j]
+        for num in nums:
+            if num != val:
+                nums[i] = num
                 i+=1
         return i
 

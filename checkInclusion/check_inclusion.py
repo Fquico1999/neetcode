@@ -97,9 +97,9 @@ def check_inclusion3(s1: str, s2:str) -> bool:
     char_count = {}
     sub_char_count = {}
     matches = 0
-    # This constant represents how many matches are needed for both HashMaps to match. 
+    # This constant represents how many matches are needed for both HashMaps to match.
     #Note that this only holds since the input strings are limited to a-z lowercase.
-    MAXMATCHES = 26
+    max_matches = 26
 
     for i, _ in enumerate(s1):
         char_count[s2[i]] = 1 + char_count.get(s2[i], 0)
@@ -113,7 +113,7 @@ def check_inclusion3(s1: str, s2:str) -> bool:
     l = 0
     for r in range(len(s1), len(s2)):
         # First, check if we have all the matches
-        if matches == MAXMATCHES:
+        if matches == max_matches:
             return True
 
         #Next, update charCount for the right pointer
@@ -137,7 +137,7 @@ def check_inclusion3(s1: str, s2:str) -> bool:
         l+=1
 
     #Since we only check at the start, check here as well.
-    return matches == MAXMATCHES
+    return matches == max_matches
 
 if __name__  == "__main__":
 
