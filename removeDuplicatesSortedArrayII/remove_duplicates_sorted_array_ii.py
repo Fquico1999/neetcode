@@ -11,6 +11,9 @@ You must do this by modifying the input array in-place with O(1) extra memory.
 """
 
 class Solution:
+    """
+    Solution Class
+    """
     def remove_duplicates(self, nums):
         """
         Extend previous solution to allow for set number of repetitions.

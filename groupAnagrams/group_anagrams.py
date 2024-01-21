@@ -6,7 +6,8 @@ Given an array of strings strs, group the anagrams together. You can return the 
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
 typically using all the original letters exactly once.
 
-1. Sorting. If we sort the words in the list, then two words are anagrams if their sorted list is identical.
+1. Sorting. If we sort the words in the list,
+then two words are anagrams if their sorted list is identical.
 If sorting is O(nlogn) where n is the mean length of input string but we must do this m times,
 where m is the number of strings so overall, O(mnlogn)
 

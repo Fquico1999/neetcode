@@ -11,6 +11,9 @@ The test cases are generated such that you can reach nums[n - 1].
 """
 
 class Solution:
+    """
+    Solution Class
+    """
     def jump(self, nums)->int:
         """
         Use a window / 2 ptr method where the window size is the jump distance.

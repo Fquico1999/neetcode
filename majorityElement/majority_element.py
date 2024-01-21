@@ -8,6 +8,9 @@ You may assume that the majority element always exists in the array.
 """
 
 class Solution:
+    """
+    Solution Class
+    """
     def majority_element(self, nums):
         """
         The solution loops through nums and creates a dict of num:count pairs. O(n) time, O(n) space

@@ -11,6 +11,9 @@ In other words, return true if one of s1's permutations is the substring of s2.
 
 
 def check_inclusion(s1: str, s2: str) -> bool:
+    """
+    Sorted implementation of sorted.
+    """
 
     if len(s1) > len(s2):
         return False
@@ -33,30 +36,31 @@ def check_inclusion(s1: str, s2: str) -> bool:
 
 def check_inclusion2(s1: str, s2:str)-> bool:
     """
-    The premise is that we use a sliding window of length s1 and repeatedly update the charCount of the sliding window
-    untill it matches the charCount of s1.
+    The premise is that we use a sliding window of length s1 and repeatedly 
+    update the charCount of the sliding window
+    until it matches the charCount of s1.
     """
 
     if len(s1) > len(s2):
         return False
 
-    charCount = {}
-    subCharCount = {}
+    char_count = {}
+    sub_char_count = {}
 
     # Might as well make use of this loop to populate charCount, then we can start at len(s1) later
 
     # Keeping track of time complexities, let len(s1) = m, len(s2)=n
     # loop over m
     # Overall this is O(m*(1+1)) = 0(2m) ~ O(m)
-    for i in range(len(s1)):
+    for i,_ in enumerate(s1):
         # dict.get() is O(1)
-        charCount[s2[i]] = 1 + charCount.get(s2[i],0)
-        subCharCount[s1[i]] = 1+subCharCount.get(s1[i], 0)
+        char_count[s2[i]] = 1 + char_count.get(s2[i],0)
+        sub_char_count[s1[i]] = 1+sub_char_count.get(s1[i], 0)
 
     l = 0
 
     # Comparison here is at worst O(26).
-    if charCount.items() == subCharCount.items():
+    if char_count.items() == sub_char_count.items():
         return True
 
     # Loop is over n-m
@@ -64,41 +68,47 @@ def check_inclusion2(s1: str, s2:str)-> bool:
     for r in range(len(s1), len(s2)):
 
         # Update the charCount of this window
-        charCount[s2[r]] = 1 + charCount.get(s2[r], 0)
-        charCount[s2[l]] -=1
+        char_count[s2[r]] = 1 + char_count.get(s2[r], 0)
+        char_count[s2[l]] -=1
         # Delete entry
-        if charCount[s2[l]] == 0:
-            charCount.pop(s2[l]) # O(1), not to be confused with list.pop which is only O(1) for the last element, otherwise it's O(n)
+        if char_count[s2[l]] == 0:
+            # O(1), not to be confused with list.pop
+            # which is only O(1) for the last element, otherwise it's O(n)
+            char_count.pop(s2[l])
         l+=1
 
         # Comparison here is at worst O(26).
-        if charCount.items() == subCharCount.items():
+        if char_count.items() == sub_char_count.items():
             return True
 
-    # Overall time complexity is ~O(n), but we can improve from ~O(26n) to O(26+n) by using a variable to track matches.
+    # Overall time complexity is ~O(n), but we can improve from ~O(26n) to O(26+n)
+    # by using a variable to track matches.
     return False
 
 def check_inclusion3(s1: str, s2:str) -> bool:
     """
-    Here, the premise is to avoid checking the two HashMaps, which is at worst O(26), and instead keep track of matches.
+    Here, the premise is to avoid checking the two HashMaps,
+    which is at worst O(26), and instead keep track of matches.
     """
 
     if len(s1) > len(s2):
         return False
 
-    charCount = {}
-    subCharCount = {}
+    char_count = {}
+    sub_char_count = {}
     matches = 0
-    MAXMATCHES = 26 # This constant represents how many matches are needed for both HashMaps to match. Note that this only holds since the input strings are limited to a-z lowercase.
+    # This constant represents how many matches are needed for both HashMaps to match. 
+    #Note that this only holds since the input strings are limited to a-z lowercase.
+    MAXMATCHES = 26
 
-    for i in range(len(s1)):
-        charCount[s2[i]] = 1 + charCount.get(s2[i], 0)
-        subCharCount[s1[i]] = 1 + subCharCount.get(s1[i],0)
+    for i, _ in enumerate(s1):
+        char_count[s2[i]] = 1 + char_count.get(s2[i], 0)
+        sub_char_count[s1[i]] = 1 + sub_char_count.get(s1[i],0)
 
     for i in range(ord('a'), ord('z')+1):
-        charCount[chr(i)] = charCount.get(chr(i), 0)
-        subCharCount[chr(i)] = subCharCount.get(chr(i), 0)
-        if charCount[chr(i)] == subCharCount[chr(i)]:
+        char_count[chr(i)] = char_count.get(chr(i), 0)
+        sub_char_count[chr(i)] = sub_char_count.get(chr(i), 0)
+        if char_count[chr(i)] == sub_char_count[chr(i)]:
             matches+=1
     l = 0
     for r in range(len(s1), len(s2)):
@@ -107,21 +117,21 @@ def check_inclusion3(s1: str, s2:str) -> bool:
             return True
 
         #Next, update charCount for the right pointer
-        charCount[s2[r]] += 1
+        char_count[s2[r]] += 1
         # Update Matches
         # If charCount is greater by one than subCount, that means they no longer match
-        if charCount[s2[r]] == subCharCount[s2[r]] +1:
+        if char_count[s2[r]] == sub_char_count[s2[r]] +1:
             matches -= 1
-        elif charCount[s2[r]] == subCharCount[s2[r]]:
+        elif char_count[s2[r]] == sub_char_count[s2[r]]:
             matches +=1
 
         # Next, update charCount for left pointer
-        charCount[s2[l]]-=1
+        char_count[s2[l]]-=1
         # Update Matches
         # If the charCount is less than subCount by one, they are no longer matches
-        if charCount[s2[l]] == subCharCount[s2[l]] -1:
+        if char_count[s2[l]] == sub_char_count[s2[l]] -1:
             matches-=1
-        elif charCount[s2[l]] == subCharCount[s2[l]]:
+        elif char_count[s2[l]] == sub_char_count[s2[l]]:
             matches+=1
 
         l+=1

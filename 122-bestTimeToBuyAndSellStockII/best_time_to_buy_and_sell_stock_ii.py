@@ -9,6 +9,9 @@ Find and return the maximum profit you can achieve.
 """
 
 class Solution:
+    """
+    Solution Class
+    """
     def max_profit(self, prices)->int:
         """
         Implements O(n) time solution.

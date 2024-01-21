@@ -4,6 +4,9 @@ Difficulty: Medium
 Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
 """
 class Solution:
+    """
+    Solution Class
+    """
     def rotate(self, nums, k):
         """
         Use array slicing and swap slices, using tmp.

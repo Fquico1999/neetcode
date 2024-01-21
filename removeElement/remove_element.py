@@ -12,6 +12,9 @@ you need to do the following things:
 """
 
 class Solution:
+    """
+    Solution Class
+    """
     def removeElementOld(self, nums, val):
 
         i = len(nums)-1 # pointer 1

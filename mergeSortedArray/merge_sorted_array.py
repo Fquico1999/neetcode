@@ -13,6 +13,9 @@ nums2 has a length of n.
 """
 
 class Solution:
+    """
+    Solution Class
+    """
     def merge_old(self, nums1, m, nums2, n) -> None:
         """
         Do not return anything, modify nums1 in-place instead.

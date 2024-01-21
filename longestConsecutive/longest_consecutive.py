@@ -9,6 +9,9 @@ You must write an algorithm that runs in O(n) time.
 """
 
 def longest_consecutive(nums):# List[int]) -> int:
+    """
+    Set implementation.
+    """
     longest = 0
     # O(n) space
     nums = set(nums)

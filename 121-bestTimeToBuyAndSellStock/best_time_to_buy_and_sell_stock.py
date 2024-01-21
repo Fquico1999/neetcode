@@ -9,6 +9,9 @@ If you cannot achieve any profit, return 0.
 """
 
 class Solution:
+    """
+    Solution Class
+    """
     def max_profit(self, prices)-> int:
         """
         Two pointer method to solve in linear time.

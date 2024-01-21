@@ -17,6 +17,9 @@ You must implement a solution with O(1) time complexity for each function.
 """
 
 class MinStack:
+    """
+    Solution Class
+    """
 
     def __init__(self):
         self.stack = []     # One stack for actual values

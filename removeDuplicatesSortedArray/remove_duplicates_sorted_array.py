@@ -13,6 +13,9 @@ Consider the number of unique elements of nums to be k:
 """
 
 class Solution:
+    """
+    Solution Class
+    """
     def remove_duplicates(self, nums):
         """
         2 pointer implementation.

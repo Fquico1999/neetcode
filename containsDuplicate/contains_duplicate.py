@@ -1,6 +1,7 @@
 """
 Difficulty: Easy
-Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+Given an integer array nums, return true if any value appears at least twice in the array,
+and return false if every element is distinct.
 
 1. Brute force solution is O(n^2) time-complexity but O(1) space.
 
@@ -8,7 +9,8 @@ Given an integer array nums, return true if any value appears at least twice in 
 Checking for duplicates is O(n) time complexity, but with sorting, it becomes O(nlogn).
 Don't need extra space if we discount space required for sorting, so O(1)
 
-3. HashSet. Check if item exists in HashSet then add it. Checking takes O(1) for n items, so O(n) time complexity.
+3. HashSet. Check if item exists in HashSet then add it. 
+Checking takes O(1) for n items, so O(n) time complexity.
 Space complexity is O(n) for the HashSet
 """
 # import unittest

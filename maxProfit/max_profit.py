@@ -15,7 +15,7 @@ def max_profit_pointers(prices):
     2 Pointer solution.
     """
     l, r = 0, 1
-    maxProfit = 0
+    max_profit = 0
     while r < len(prices):
 
         if prices[r] < prices[l]:
@@ -25,10 +25,10 @@ def max_profit_pointers(prices):
 
             profit = prices[r] - prices[l]
 
-            if profit > maxProfit:
-                maxProfit = profit
+            if profit > max_profit:
+                max_profit = profit
             r+=1
-    return maxProfit
+    return max_profit
 
 if __name__ == "__main__":
     p = [7,1,5,3,6,4]

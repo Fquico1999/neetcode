@@ -8,10 +8,15 @@ Valid operators are +, -, *, and /. Each operand may be an integer or another ex
 
 Note that division between two integers should truncate toward zero.
 
-It is guaranteed that the given RPN expression is always valid. That means the expression would always evaluate to a result, and there will not be any division by zero operation.
+It is guaranteed that the given RPN expression is always valid.
+That means the expression would always evaluate to a result,
+and there will not be any division by zero operation.
 """
 
-def evalRPN(tokens) -> int:
+def eval_rpn(tokens) -> int:
+    """
+    Stack implementation.
+    """
 
     operators = ['+', '-', '/', '*']
     stack = []
@@ -46,7 +51,7 @@ def evalRPN(tokens) -> int:
 
 if __name__ == "__main__":
 
-    assert evalRPN(["2","1","+","3","*"]) == 9
-    assert evalRPN(["4","13","5","/","+"]) == 6
-    assert evalRPN(["10","6","9","3","+","-11","*","/","*","17","+","5","+"])==22
-    assert evalRPN(["1", "1", "*"])==1
+    assert eval_rpn(["2","1","+","3","*"]) == 9
+    assert eval_rpn(["4","13","5","/","+"]) == 6
+    assert eval_rpn(["10","6","9","3","+","-11","*","/","*","17","+","5","+"])==22
+    assert eval_rpn(["1", "1", "*"])==1

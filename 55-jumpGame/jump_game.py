@@ -8,6 +8,9 @@ Return true if you can reach the last index, or false otherwise.
 """
 
 class Solution:
+    """
+    Solution Class
+    """
     def can_jump(self, nums)->bool:
         """
         O(n) solution. Observation is that each entry adds to the greatest "Reach".
