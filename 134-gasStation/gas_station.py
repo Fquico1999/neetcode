@@ -78,3 +78,28 @@ class Solution: # pylint: disable=too-few-public-methods
                 # Adjust r to ensure it wraps around.
                 r = r % len(diff)
         return -1
+
+    def can_complete_circuit_optimized(self, gas, cost)->int:
+        """
+        Optimized O(n) implementation. Improves on the window design by removing having to 
+        recheck the enitre circle. Essentially, keeping track of the total surplus allows
+        for an easy way to see if starting at a later index can make the full loop.
+        """
+        total_surplus = 0
+        curr_surplus = 0
+        start_idx = 0
+
+        for i, g_i in enumerate(gas):
+            total_surplus+= g_i - cost[i]
+            curr_surplus += g_i - cost[i]
+            if gas[start_idx] - cost[start_idx] < 0:
+                # Skip
+                start_idx = i+1
+                curr_surplus = 0
+            elif curr_surplus < 0:
+                # Skip to the next index
+                start_idx = i+1
+                curr_surplus = 0
+        if total_surplus >=0:
+            return start_idx
+        return -1

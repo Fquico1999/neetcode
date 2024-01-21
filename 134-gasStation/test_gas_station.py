@@ -13,6 +13,7 @@ def test1():
     cost = [3,4,5,1,2]
     assert sol.can_complete_circuit_brute(gas, cost) == 3
     assert sol.can_complete_circuit_window(gas, cost) == 3
+    assert sol.can_complete_circuit_optimized(gas, cost) == 3
 
 def test2():
     """
@@ -22,6 +23,7 @@ def test2():
     cost = [3,4,3]
     assert sol.can_complete_circuit_brute(gas, cost) == -1
     assert sol.can_complete_circuit_window(gas, cost) == -1
+    assert sol.can_complete_circuit_optimized(gas, cost) == -1
 
 def test3():
     """
@@ -31,6 +33,7 @@ def test3():
     cost = [2,2,1,3,1]
     assert sol.can_complete_circuit_brute(gas, cost) == 4
     assert sol.can_complete_circuit_window(gas, cost) == 4
+    assert sol.can_complete_circuit_optimized(gas, cost) == 4
 
 def test4():
     """
@@ -40,6 +43,8 @@ def test4():
     gas = [4,5,2,6,5,3]
     cost = [3,2,7,3,2,9]
     assert sol.can_complete_circuit_window(gas, cost) == -1
+    assert sol.can_complete_circuit_optimized(gas, cost) == -1
+
 
 def test5():
     """
@@ -48,6 +53,7 @@ def test5():
     gas = [1,2,3,4,3,2,4,1,5,3,2,4]
     cost = [1,1,1,3,2,4,3,6,7,4,3,1]
     assert sol.can_complete_circuit_window(gas, cost) == -1
+    assert sol.can_complete_circuit_optimized(gas, cost) == -1
 
 def test6():
     """
@@ -56,3 +62,5 @@ def test6():
     gas = [3,1,1]
     cost = [1,2,2]
     assert sol.can_complete_circuit_window(gas, cost) == 0
+    assert sol.can_complete_circuit_brute(gas, cost) == 0
+    assert sol.can_complete_circuit_optimized(gas, cost) == 0
