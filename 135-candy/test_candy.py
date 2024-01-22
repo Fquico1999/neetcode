@@ -63,7 +63,7 @@ def test8():
 
 def test9():
     """
-    
+    Increase followed by sudden drop.
     """
     ratings = [1,3,4,5,2]
     assert sol.candy(ratings) == 11
