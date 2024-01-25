@@ -14,6 +14,7 @@ def test1():
     s ="anagram"
     t = "nagaram"
     assert sol.is_anagram(s, t) is True
+    assert sol.is_anagram_hashmap(s, t) is True
 
 def test2():
     """
@@ -22,3 +23,4 @@ def test2():
     s = "rat"
     t = "car"
     assert sol.is_anagram(s,t) is False
+    assert sol.is_anagram_hashmap(s,t) is False
