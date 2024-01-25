@@ -53,3 +53,26 @@ class Solution: #pylint: disable=too-few-public-methods
             interval[0] -= 2
             interval[1] += 2
         return zig_zag
+
+    def convert2(self, s, num_rows)->str:
+        """
+        Secondary implementation that instead of using intervals to traverse
+        the original string, create an array of strings representing rows,
+        and add the characters as they come to the proper row.
+        """
+
+        if len(s) <=2 or num_rows == 1:
+            return s
+        zig_zag = ['']*num_rows
+        # Increment will be 1 for going down the rows, and -1 to come back up
+        increment = 1
+        row_idx = 0
+        for c in s:
+            zig_zag[row_idx] += c
+
+            if row_idx == 0:
+                increment = 1
+            elif row_idx == num_rows-1:
+                increment = -1
+            row_idx+=increment
+        return "".join(zig_zag)

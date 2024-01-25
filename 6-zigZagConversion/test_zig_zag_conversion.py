@@ -13,6 +13,7 @@ def test1():
     s = "PAYPALISHIRING"
     num_rows = 3
     assert sol.convert(s, num_rows) == "PAHNAPLSIIGYIR"
+    assert sol.convert2(s, num_rows) == "PAHNAPLSIIGYIR"
 
 def test2():
     """
@@ -25,6 +26,7 @@ def test2():
     s = "PAYPALISHIRING"
     num_rows = 4
     assert sol.convert(s, num_rows) == "PINALSIGYAHRPI"
+    assert sol.convert2(s, num_rows) == "PINALSIGYAHRPI"
 
 
 def test3():
@@ -34,6 +36,7 @@ def test3():
     s = "A"
     num_rows = 1
     assert sol.convert(s, num_rows) == "A"
+    assert sol.convert2(s, num_rows) == "A"
 
 def test4():
     """
@@ -42,6 +45,7 @@ def test4():
     s = "PAL"
     num_rows = 2
     assert sol.convert(s, num_rows) == "PLA"
+    assert sol.convert2(s, num_rows) == "PLA"
 
 def test5():
     """
@@ -50,6 +54,7 @@ def test5():
     s = "PAYPALISHIRING"
     num_rows = 5
     assert sol.convert(s, num_rows) == "PHASIYIRPLIGAN"
+    assert sol.convert2(s, num_rows) == "PHASIYIRPLIGAN"
 
 def test6():
     """
@@ -58,3 +63,4 @@ def test6():
     s = "ABC"
     num_rows=1
     assert sol.convert(s, num_rows) == "ABC"
+    assert sol.convert2(s, num_rows) == "ABC"
