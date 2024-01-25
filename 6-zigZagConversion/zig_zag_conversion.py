@@ -59,6 +59,7 @@ class Solution: #pylint: disable=too-few-public-methods
         Secondary implementation that instead of using intervals to traverse
         the original string, create an array of strings representing rows,
         and add the characters as they come to the proper row.
+        Here, we only need to iterate over the string, so O(m)
         """
 
         if len(s) <=2 or num_rows == 1:
