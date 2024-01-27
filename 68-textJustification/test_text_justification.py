@@ -30,7 +30,7 @@ def test3():
     """
     Third leetcode test case
     """
-    words = ["Science","is","what","we","understand","well", "enough","to","explain", 
+    words = ["Science","is","what","we","understand","well", "enough","to","explain",
              "to","a","computer.","Art","is","everything","else","we","do"]
     max_width = 20
     assert sol.full_justify(words, max_width) == ["Science  is  what we",
