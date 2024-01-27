@@ -53,6 +53,8 @@ class Solution(): #pylint: disable=too-few-public-methods
                 str_arr[-1]+=word+" "
                 str_lens[-1].append(len(word))
 
+        # Ensure the last string doesn't have an extra whitespace
+        str_arr[-1] = str_arr[-1][:max_width]
         # Next, iterate over the array, and adjust until max_width is reached
         for i, string in enumerate(str_arr):
             # Fully left justify the last entry or single word

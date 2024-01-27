@@ -39,3 +39,16 @@ def test3():
                                                   "a  computer.  Art is", 
                                                   "everything  else  we", 
                                                   "do                  "]
+
+def test4():
+    """
+    Case where adding spaces to last line fails.
+    """
+    words = ["ask","not","what","your","country","can","do","for",
+             "you","ask","what","you","can","do","for","your","country"]
+    max_width = 16
+    assert sol.full_justify(words, max_width) == ["ask   not   what",
+                                                  "your country can",
+                                                  "do  for  you ask",
+                                                  "what  you can do",
+                                                  "for your country"]
